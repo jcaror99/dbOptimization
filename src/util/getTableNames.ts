@@ -1,19 +1,24 @@
-import { ProcedureCallPacket, ResultSetHeader } from "mysql2";
+import { ProcedureCallPacket, RowDataPacket } from "mysql2";
 import dbConnection from "../database/connection/dbConnection.js";
 
 const getTableNames = () => {
   const sql = "CALL sp_getTableNames()";
 
-  dbConnection.query<ProcedureCallPacket<ResultSetHeader>>(
-    sql,
-    (err, results) => {
-      if (err) {
-        console.error(err);
-        return;
+  return new Promise((resolve, reject) => {
+    dbConnection.query<ProcedureCallPacket<RowDataPacket[]>>(
+      sql,
+      (err, results) => {
+        if (err) {
+          console.error(err);
+          reject(err);
+          return;
+        }
+
+        const tableNames = results[0] as RowDataPacket[];
+        resolve(tableNames);
       }
-      console.log(results);
-    }
-  );
+    );
+  });
 };
 
 export default getTableNames;
