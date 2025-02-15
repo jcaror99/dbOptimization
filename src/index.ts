@@ -1,12 +1,26 @@
-import getTableNames from "./util/getTableNames.js";
+import callProcedure from "./util/callProcedure.js";
 import { TableName } from "./types/definitions.js";
+import getSentence from "./data/getSentence.js";
 
-const tableNames = async () => {
+const app = async () => {
   try {
-    const names = (await getTableNames()) as TableName[];
-    names.forEach((name) => console.log(name.TABLE_NAME));
+    const names = (await callProcedure(
+      getSentence("tableNames")
+    )) as TableName[];
+
+    for (const name of names) {
+      const analyze = await callProcedure(getSentence("analyze"), [
+        name.TABLE_NAME,
+      ]);
+      console.log(`Analyzed table: ${name.TABLE_NAME}`, analyze);
+
+      const optimize = await callProcedure(getSentence("optimize"), [
+        name.TABLE_NAME,
+      ]);
+      console.log(`Optimized table: ${name.TABLE_NAME}`, optimize);
+    }
   } catch (error) {
     console.error("Error fetching table names", error);
   }
 };
-tableNames();
+app();
