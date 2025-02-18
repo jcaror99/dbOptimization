@@ -7,5 +7,5 @@ BEGIN
     FROM
         information_schema.tables
     WHERE
-        table_schema = 'rentalApp';
+        table_schema = 'cimatest';
 END;
