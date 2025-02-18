@@ -1,0 +1,80 @@
+Starting process at: 2025-02-18T01:58:00.778Z
+
+---- Table: charges ----
+
+Analyze process: charges
+ [
+  {
+    "Table": "rentalapp.charges",
+    "Op": "analyze",
+    "Msg_type": "status",
+    "Msg_text": "OK"
+  }
+]
+Optimized process: charges
+ [
+  {
+    "Table": "rentalapp.charges",
+    "Op": "optimize",
+    "Msg_type": "note",
+    "Msg_text": "Table does not support optimize, doing recreate + analyze instead"
+  },
+  {
+    "Table": "rentalapp.charges",
+    "Op": "optimize",
+    "Msg_type": "status",
+    "Msg_text": "OK"
+  }
+]
+---- Table: profiles ----
+
+Analyze process: profiles
+ [
+  {
+    "Table": "rentalapp.profiles",
+    "Op": "analyze",
+    "Msg_type": "status",
+    "Msg_text": "OK"
+  }
+]
+Optimized process: profiles
+ [
+  {
+    "Table": "rentalapp.profiles",
+    "Op": "optimize",
+    "Msg_type": "note",
+    "Msg_text": "Table does not support optimize, doing recreate + analyze instead"
+  },
+  {
+    "Table": "rentalapp.profiles",
+    "Op": "optimize",
+    "Msg_type": "status",
+    "Msg_text": "OK"
+  }
+]
+---- Table: users ----
+
+Analyze process: users
+ [
+  {
+    "Table": "rentalapp.users",
+    "Op": "analyze",
+    "Msg_type": "status",
+    "Msg_text": "OK"
+  }
+]
+Optimized process: users
+ [
+  {
+    "Table": "rentalapp.users",
+    "Op": "optimize",
+    "Msg_type": "note",
+    "Msg_text": "Table does not support optimize, doing recreate + analyze instead"
+  },
+  {
+    "Table": "rentalapp.users",
+    "Op": "optimize",
+    "Msg_type": "status",
+    "Msg_text": "OK"
+  }
+]
